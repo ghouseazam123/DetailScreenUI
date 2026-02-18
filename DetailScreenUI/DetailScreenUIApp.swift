@@ -11,7 +11,7 @@ import SwiftUI
 struct DetailScreenUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FirstScreen()
         }
     }
 }
