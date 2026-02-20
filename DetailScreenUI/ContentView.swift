@@ -222,7 +222,7 @@ struct QuestionSectionView: View {
             Button(action: {
                 print("Download tapped")
             }) {
-                HStack(spacing: 12) {
+                HStack(spacing: 8) {
                     
                     Image(systemName: "doc.text.fill")
                         .resizable()
@@ -234,7 +234,7 @@ struct QuestionSectionView: View {
                         .foregroundColor(Color(hex: "#575B6E"))
                         .frame(height: 16, alignment: .leading)
                     
-                    Spacer()
+                    Spacer().frame(width:35)
                     
                     ZStack {
                         Circle()
@@ -258,7 +258,7 @@ struct QuestionSectionView: View {
                 .shadow(color: Color.black.opacity(0.04), radius: 6, x: 0, y: 2)
             }
             .buttonStyle(.plain)
-            .padding(.horizontal, 15)
+            .padding(.leading, 15)
         }
     }
 }
