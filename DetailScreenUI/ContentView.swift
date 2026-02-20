@@ -7,8 +7,104 @@
 
 import SwiftUI
 
+//struct FirstScreen: View {
+//    var body: some View {
+//        NavigationView {
+//
+//            VStack {
+//                Spacer()
+//
+//                NavigationLink(destination: ContentView()) {
+//                    Text("Detail View")
+//                        .font(.system(size: 18, weight: .semibold))
+//                        .foregroundColor(.white)
+//                        .padding()
+//                        .frame(width: 200)
+//                        .background(Color.blue)
+//                        .cornerRadius(12)
+//                }
+//
+//                Spacer()
+//            }
+//            .navigationBarHidden(true)
+//        }
+//    }
+//}
+//struct ContentView: View {
+//
+//    @Environment(\.presentationMode) var presentationMode
+//
+//    var body: some View {
+//        Group {
+//            VStack(spacing: 0) {
+//
+//                customNavigationBar
+//
+//
+//                VStack(alignment: .leading) {
+//
+//                    CourseInfoView()
+//                    InstructorCardView()
+//                    DateTimeView()
+//                    Spacer().frame(height: 32)
+//                    QuestionSectionView()
+//                    Spacer().frame(height: 32)
+//                    Divider()
+//                        .frame(height: 1)
+//                        .background(Color(hex: "#D2DBE7"))
+//                        .padding(.trailing, 15)
+//                        .padding(.leading, 22)
+//
+//                    Spacer().frame(height: 32)
+//
+//                    RatingView()
+//
+//                    Spacer()
+//                }
+//
+//            }
+//            .navigationBarHidden(true)
+//            .ignoresSafeArea(edges: .top)
+//        }
+//    }
+//}
+//extension ContentView {
+//
+//    var customNavigationBar: some View {
+//        VStack(spacing: 0) {
+//
+//            HStack {
+//
+//                Button(action: {
+//                    presentationMode.wrappedValue.dismiss()
+//                }) {
+//                    Image(systemName: "chevron.left")
+//                        .font(.system(size: 16, weight: .semibold))
+//                        .foregroundColor(Color(hex: "#324045"))
+//                }
+//
+//                Text("View Details")
+//                    .font(.system(size: 17, weight: .semibold))
+//                    .foregroundColor(Color(hex: "#000000"))
+//
+//                Spacer()
+//            }
+//            .padding(.horizontal, 12)
+//            .padding(.top, 60)
+//            .padding(.bottom, 12)
+//            .background(Color.white)
+//
+//            Divider()
+//                .background(Color(hex: "#D2DBE7"))
+//        }
+//    }
+//}
+
+import SwiftUI
+
 struct FirstScreen: View {
     var body: some View {
+
         NavigationView {
 
             VStack {
@@ -30,80 +126,67 @@ struct FirstScreen: View {
         }
     }
 }
+
+
 struct ContentView: View {
 
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        Group {
-            VStack(spacing: 0) {
-                
-                customNavigationBar
-                
-                
-                VStack(alignment: .leading) {
-                    
-                    CourseInfoView()
-                    InstructorCardView()
-                    DateTimeView()
-                    Spacer().frame(height: 32)
-                    QuestionSectionView()
-                    Spacer().frame(height: 32)
-                    Divider()
-                        .frame(height: 1)
-                        .background(Color(hex: "#D2DBE7"))
-                        .padding(.trailing, 15)
-                        .padding(.leading, 22)
-                    
-                    Spacer().frame(height: 32)
-                    
-                    RatingView()
-                    
-                    Spacer()
-                }
-                
-            }
-            .navigationBarHidden(true)
-            .ignoresSafeArea(edges: .top)
-        }
-    }
-}
-extension ContentView {
 
-    var customNavigationBar: some View {
         VStack(spacing: 0) {
-            
-            HStack {
+
+            VStack(alignment: .leading) {
+                Divider().foregroundColor(Color(hex: "#F5F7F8"))
+                CourseInfoView()
+                InstructorCardView()
+                DateTimeView()
+
+               
+
+                QuestionSectionView()
+
+             
+
+                Divider()
+                    .frame(height: 1)
+                    .background(Color(hex: "#D2DBE7"))
+                    .padding(.horizontal, 15)
+                    .padding(.top,32)
+
                 
+
+                RatingView()
+
+                Spacer()
+            }
+        }
+
+        
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+            HStack(spacing: 8) {
+
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color(hex: "#324045"))
+                        .foregroundColor(.black)
                 }
-                
+
                 Text("View Details")
                     .font(.system(size: 17, weight: .semibold))
-                    .foregroundColor(Color(hex: "#000000"))
-                
-                Spacer()
+                    .foregroundColor(.black)
             }
-            .padding(.horizontal, 12)
-            .padding(.top, 60)
-            .padding(.bottom, 12)
-            .background(Color.white)
-            
-            Divider()
-                .background(Color(hex: "#D2DBE7"))
-        }
+        )
     }
 }
-
 struct CourseInfoView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            Spacer().frame(height:16)
+            
             Text("Java Full Stack Course Jan 2026")
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(Color(hex: "#000000"))
@@ -111,7 +194,8 @@ struct CourseInfoView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .opacity(1)
                 .padding(.leading,12)
-            Spacer().frame(height:16)
+                .padding(.top,16)
+            Spacer().frame(height:4)
             Text("Java Programming for Complete Beginners")
                 .font(.system(size: 12, weight: .medium))
                 .foregroundColor(Color(hex: "#575B6E"))
@@ -119,7 +203,7 @@ struct CourseInfoView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .opacity(1)
                 .padding(.leading,12)
-            Spacer().frame(height:10)
+
             Text("Completed")
                 .font(.system(size: 8, weight: .medium))
                 .foregroundColor(Color(hex: "#379840"))
@@ -200,6 +284,7 @@ struct DateTimeView: View {
 struct QuestionSectionView: View {
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 0) {
 
             Text("Your Question")
@@ -207,16 +292,17 @@ struct QuestionSectionView: View {
                 .foregroundColor(Color(hex: "#575B6E"))
                 .frame(height: 18, alignment: .leading)
                 .padding(.horizontal, 15)
-              Spacer().frame(height: 6)
+                .padding(.top,32)
+             
             
             Text("In this advanced masterclass, we explored complex user behaviour patterns and high-fidelity research synthesis.")
                 .font(.system(size: 12, weight: .regular))
                 .foregroundColor(Color(hex: "#575B6E"))
                 .frame(height: 32, alignment: .leading)
-                .padding(.horizontal, 17)
+                .padding(.horizontal, 17).padding(.top,6)
 
             
-            Spacer().frame(height: 12)
+            
 
             
             Button(action: {
@@ -258,7 +344,7 @@ struct QuestionSectionView: View {
                 .shadow(color: Color.black.opacity(0.04), radius: 6, x: 0, y: 2)
             }
             .buttonStyle(.plain)
-            .padding(.leading, 15)
+            .padding(.leading, 15).padding(.top,12)
         }
     }
 }
@@ -280,7 +366,7 @@ struct RatingView: View {
                 .frame(height: 18, alignment: .leading)
 
             
-            Spacer().frame(height: 10)
+           
 
             
             HStack(spacing: 6) {
@@ -337,7 +423,7 @@ struct RatingView: View {
                     .foregroundColor(.black)
                     .padding(.leading, 6)
             }
-
+            .padding(.top,10)
            
             Spacer().frame(height: 5)
 
@@ -347,7 +433,8 @@ struct RatingView: View {
                 .foregroundColor(Color(hex: "#575B6E"))
                 .frame(height: 32, alignment: .leading)
         }
-        .padding(.horizontal, 15) 
+        .padding(.horizontal, 15)
+        .padding(.top,32)
     }
 }
 struct InfoItem: View {
