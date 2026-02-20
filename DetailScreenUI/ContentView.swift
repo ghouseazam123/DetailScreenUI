@@ -265,18 +265,20 @@ struct DateTimeView: View {
                          title: "Date",
                          value: "Dec 11, 2025")
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(Color(hex: "#5F6368"))
 
                 InfoItem(icon: "clock",
                          title: "Time",
                          value: "3:00 PM - 3:45 PM")
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(Color(hex: "#5F6368"))
             }
 
             InfoItem(icon: "stopwatch",
                      title: "Duration",
                      value: "45 Minutes")
                 .frame(maxWidth: .infinity, alignment: .leading)
-
+                .foregroundColor(Color(hex: "#5F6368"))
         }
         .padding(.horizontal, 12)
     }
