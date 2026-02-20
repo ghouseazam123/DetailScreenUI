@@ -7,98 +7,9 @@
 
 import SwiftUI
 
-//struct FirstScreen: View {
-//    var body: some View {
-//        NavigationView {
-//
-//            VStack {
-//                Spacer()
-//
-//                NavigationLink(destination: ContentView()) {
-//                    Text("Detail View")
-//                        .font(.system(size: 18, weight: .semibold))
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .frame(width: 200)
-//                        .background(Color.blue)
-//                        .cornerRadius(12)
-//                }
-//
-//                Spacer()
-//            }
-//            .navigationBarHidden(true)
-//        }
-//    }
-//}
-//struct ContentView: View {
-//
-//    @Environment(\.presentationMode) var presentationMode
-//
-//    var body: some View {
-//        Group {
-//            VStack(spacing: 0) {
-//
-//                customNavigationBar
-//
-//
-//                VStack(alignment: .leading) {
-//
-//                    CourseInfoView()
-//                    InstructorCardView()
-//                    DateTimeView()
-//                    Spacer().frame(height: 32)
-//                    QuestionSectionView()
-//                    Spacer().frame(height: 32)
-//                    Divider()
-//                        .frame(height: 1)
-//                        .background(Color(hex: "#D2DBE7"))
-//                        .padding(.trailing, 15)
-//                        .padding(.leading, 22)
-//
-//                    Spacer().frame(height: 32)
-//
-//                    RatingView()
-//
-//                    Spacer()
-//                }
-//
-//            }
-//            .navigationBarHidden(true)
-//            .ignoresSafeArea(edges: .top)
-//        }
-//    }
-//}
-//extension ContentView {
-//
-//    var customNavigationBar: some View {
-//        VStack(spacing: 0) {
-//
-//            HStack {
-//
-//                Button(action: {
-//                    presentationMode.wrappedValue.dismiss()
-//                }) {
-//                    Image(systemName: "chevron.left")
-//                        .font(.system(size: 16, weight: .semibold))
-//                        .foregroundColor(Color(hex: "#324045"))
-//                }
-//
-//                Text("View Details")
-//                    .font(.system(size: 17, weight: .semibold))
-//                    .foregroundColor(Color(hex: "#000000"))
-//
-//                Spacer()
-//            }
-//            .padding(.horizontal, 12)
-//            .padding(.top, 60)
-//            .padding(.bottom, 12)
-//            .background(Color.white)
-//
-//            Divider()
-//                .background(Color(hex: "#D2DBE7"))
-//        }
-//    }
-//}
+
+        
+       
 
 import SwiftUI
 
@@ -137,7 +48,7 @@ struct ContentView: View {
         VStack(spacing: 0) {
 
             VStack(alignment: .leading) {
-                Divider().foregroundColor(Color(hex: "#F5F7F8"))
+                Divider().foregroundColor(Color(hex: "#D0DBE8"))
                 CourseInfoView()
                 InstructorCardView()
                 DateTimeView()
@@ -222,7 +133,7 @@ struct CourseInfoView: View {
 struct InstructorCardView: View {
     var body: some View {
         Spacer().frame(height:16)
-        HStack (spacing:6){
+        HStack{
             Image("Image")
                 .resizable()
                 .scaledToFit()
@@ -238,7 +149,7 @@ struct InstructorCardView: View {
                     .font(.system(size: 12, weight: .regular))
                     .foregroundColor(Color(hex: "#575B6E"))
                     .frame(height: 15, alignment: .leading)
-            }.padding(.horizontal,6)
+            }
             
             Spacer()
         }
@@ -261,7 +172,7 @@ struct DateTimeView: View {
 
             HStack {
 
-                InfoItem(icon: "calendar",
+                InfoItem(icon: "Calendar",
                          title: "Date",
                          value: "Dec 11, 2025")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -276,7 +187,8 @@ struct DateTimeView: View {
 
             InfoItem(icon: "stopwatch",
                      title: "Duration",
-                     value: "45 Minutes")
+                     value: "45 Minutes",
+                     iconScale: 2.0)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(Color(hex: "#5F6368"))
         }
@@ -324,12 +236,14 @@ struct QuestionSectionView: View {
                     
                     Spacer().frame(width:35)
                     
+
                     ZStack {
                         Circle()
                             .fill(Color(hex: "#0179FF").opacity(0.08))
                             .frame(width: 24, height: 24)
-                        
-                        Image(systemName: "arrow.down.to.line")
+
+                        Image("DownloadArrow")
+                            .renderingMode(.template)   
                             .resizable()
                             .frame(width: 12, height: 12)
                             .foregroundColor(Color(hex: "#0179FF"))
@@ -353,7 +267,7 @@ struct QuestionSectionView: View {
 
 struct RatingView: View {
     
-    let rating: Double = 4.8
+    let rating: Double = 3.8
     let maxStars: Int = 5
 
     var body: some View {
@@ -439,19 +353,23 @@ struct RatingView: View {
         .padding(.top,32)
     }
 }
+
 struct InfoItem: View {
 
     let icon: String
     let title: String
     let value: String
+    var iconScale: CGFloat = 1.0
 
     var body: some View {
         HStack(spacing: 12) {
 
-            Image(systemName: icon)
+            Image(icon)
+                .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 16, height: 16)
+                .scaleEffect(iconScale)
                 .padding(13)
                 .background(Color(hex: "#F0F3F8"))
                 .cornerRadius(10)
@@ -469,6 +387,7 @@ struct InfoItem: View {
         }
     }
 }
+
 
 extension Color {
     init(hex: String, opacity: Double = 1.0) {
